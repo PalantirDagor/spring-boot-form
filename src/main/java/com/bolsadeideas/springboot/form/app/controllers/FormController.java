@@ -1,5 +1,6 @@
 package com.bolsadeideas.springboot.form.app.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.bolsadeideas.springboot.form.app.models.domain.Usuario;
+import com.bolsadeideas.springboot.form.app.validation.UsuarioValidador;
 
 import jakarta.validation.Valid;
 
@@ -16,6 +18,9 @@ import jakarta.validation.Valid;
 @SessionAttributes("usuario")
 public class FormController {
 
+	@Autowired
+	private UsuarioValidador validador;
+	
 	@GetMapping("/form")
 	public String form(Model model) {
 		
@@ -33,6 +38,7 @@ public class FormController {
 	@PostMapping("/form")
 	public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
 		
+		validador.validate(usuario, result);
 		model.addAttribute("titulo", "Resultado del Formulario");
 		
 		if(result.hasErrors()) {
