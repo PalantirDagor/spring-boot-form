@@ -33,7 +33,7 @@ public class FormController {
 	public String form(Model model) {
 		
 		Usuario usuario = new Usuario();
-		usuario.setIdentification("128.457.588-D");
+		usuario.setIdentification("12.457.588-D");
 		usuario.setName("Jhon");
 		usuario.setLastName("Doe");
 		
@@ -46,7 +46,7 @@ public class FormController {
 	@PostMapping("/form")
 	public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
 		
-		validador.validate(usuario, result);
+		// validador.validate(usuario, result); desacoplar el validador
 		model.addAttribute("titulo", "Resultado del Formulario");
 		
 		if(result.hasErrors()) {
