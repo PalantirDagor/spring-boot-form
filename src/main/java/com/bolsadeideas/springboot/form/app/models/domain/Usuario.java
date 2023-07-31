@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.form.app.models.domain;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 //import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -17,7 +18,7 @@ public class Usuario {
 	@NotEmpty
 	private String lastName;
 	
-	@NotEmpty
+	@NotBlank
 	@Size(min = 3, max = 8)
 	private String username;
 	
