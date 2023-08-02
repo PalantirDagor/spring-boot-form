@@ -13,6 +13,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 //import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -47,8 +48,10 @@ public class Usuario {
 	@Max(5000)
 	private Integer cuenta;
 	
+	@Past
+	//@Future
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimiento;
 
 	public String getUsername() {
