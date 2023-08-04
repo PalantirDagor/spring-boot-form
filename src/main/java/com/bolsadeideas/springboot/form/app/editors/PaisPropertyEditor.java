@@ -12,24 +12,18 @@ public class PaisPropertyEditor extends PropertyEditorSupport {
 
 	@Autowired
 	private IPaisService service;
-	
+
 	@Override
 	public void setAsText(String idString) throws IllegalArgumentException {
-		
-		if(idString != null && idString.length() > 0) {
-			
-			try {
-				
-				Integer id = Integer.parseInt(idString);
-				
-				this.setValue(service.obtenerPorId(id));
-			} catch (NumberFormatException e) {
-				
-				setValue(null);
-			}
-		} else {
-			
+
+		try {
+
+			Integer id = Integer.parseInt(idString);
+
+			this.setValue(service.obtenerPorId(id));
+		} catch (NumberFormatException e) {
+
 			setValue(null);
 		}
-	}	
+	}
 }
