@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.bolsadeideas.springboot.form.app.editors.NombreMayusculaEditor;
+import com.bolsadeideas.springboot.form.app.models.domain.Pais;
 import com.bolsadeideas.springboot.form.app.models.domain.Usuario;
 import com.bolsadeideas.springboot.form.app.validation.UsuarioValidador;
 
@@ -63,6 +64,19 @@ public class FormController {
 		paises.put("VE", "Venezuela");
 		
 		return paises;
+	}
+	
+	@ModelAttribute("listaPaises")
+	public List<Pais> listaPaises(){
+		
+		return Arrays.asList(
+					new Pais(1, "AR", "Argentina"),
+					new Pais(2, "CL", "Chile"),
+					new Pais(3, "CO", "Colombia"),
+					new Pais(4, "ES", "España"),
+					new Pais(5, "PE", "Peru"),
+					new Pais(6, "VE", "Venezuela")
+				);
 	}
 	
 	@GetMapping("/form")
