@@ -23,6 +23,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.bolsadeideas.springboot.form.app.editors.NombreMayusculaEditor;
 import com.bolsadeideas.springboot.form.app.models.domain.Pais;
 import com.bolsadeideas.springboot.form.app.models.domain.Usuario;
+import com.bolsadeideas.springboot.form.app.services.IPaisService;
 import com.bolsadeideas.springboot.form.app.validation.UsuarioValidador;
 
 import jakarta.validation.Valid;
@@ -34,6 +35,9 @@ public class FormController {
 	@Autowired
 	private UsuarioValidador validador;
 	
+	@Autowired
+	private IPaisService paisService;
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		
@@ -44,6 +48,12 @@ public class FormController {
 		
 		binder.registerCustomEditor(String.class, "name", new NombreMayusculaEditor());
 		binder.registerCustomEditor(String.class, "lastName", new NombreMayusculaEditor());
+	}
+	
+	@ModelAttribute("listaPaises")
+	public List<Pais> listaPaises(){
+		
+		return paisService.listar();
 	}
 	
 	@ModelAttribute("paises")
@@ -64,19 +74,6 @@ public class FormController {
 		paises.put("VE", "Venezuela");
 		
 		return paises;
-	}
-	
-	@ModelAttribute("listaPaises")
-	public List<Pais> listaPaises(){
-		
-		return Arrays.asList(
-					new Pais(1, "AR", "Argentina"),
-					new Pais(2, "CL", "Chile"),
-					new Pais(3, "CO", "Colombia"),
-					new Pais(4, "ES", "España"),
-					new Pais(5, "PE", "Peru"),
-					new Pais(6, "VE", "Venezuela")
-				);
 	}
 	
 	@GetMapping("/form")
