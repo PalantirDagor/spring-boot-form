@@ -24,8 +24,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.bolsadeideas.springboot.form.app.editors.NombreMayusculaEditor;
 import com.bolsadeideas.springboot.form.app.editors.PaisPropertyEditor;
 import com.bolsadeideas.springboot.form.app.models.domain.Pais;
+import com.bolsadeideas.springboot.form.app.models.domain.Rol;
 import com.bolsadeideas.springboot.form.app.models.domain.Usuario;
 import com.bolsadeideas.springboot.form.app.services.IPaisService;
+import com.bolsadeideas.springboot.form.app.services.IRolService;
 import com.bolsadeideas.springboot.form.app.validation.UsuarioValidador;
 
 import jakarta.validation.Valid;
@@ -42,6 +44,9 @@ public class FormController {
 	
 	@Autowired
 	private PaisPropertyEditor paisEditor;
+	
+	@Autowired
+	private IRolService rolService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -103,6 +108,12 @@ public class FormController {
 		roles.put("ROLE_MODERATOR", "Moderador");
 		
 		return roles;
+	}
+	
+	@ModelAttribute("listaRoles")
+	public List<Rol> listaRoles(){
+		
+		return this.rolService.listar();
 	}
 	
 	@GetMapping("/form")
