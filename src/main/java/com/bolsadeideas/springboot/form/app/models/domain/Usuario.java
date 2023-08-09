@@ -60,6 +60,8 @@ public class Usuario {
 	
 	@NotEmpty
 	private List<Rol> roles;
+	
+	private Boolean habilitarUsuario;
 
 	public String getUsername() {
 		return username;
@@ -139,5 +141,13 @@ public class Usuario {
 
 	public void setRoles(List<Rol> roles) {
 		this.roles = roles;
+	}
+
+	public Boolean getHabilitarUsuario() {
+		return habilitarUsuario;
+	}
+
+	public void setHabilitarUsuario(Boolean habilitarUsuario) {
+		this.habilitarUsuario = habilitarUsuario;
 	}
 }
