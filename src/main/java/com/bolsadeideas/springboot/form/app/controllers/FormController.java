@@ -68,6 +68,12 @@ public class FormController {
 		
 	}
 	
+	@ModelAttribute("sexo")
+	public List<String> sexo(){
+		
+		return Arrays.asList("Hombre", "Mujer");
+	}
+	
 	@ModelAttribute("listaPaises")
 	public List<Pais> listaPaises(){
 		
