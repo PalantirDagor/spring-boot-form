@@ -65,6 +65,8 @@ public class Usuario {
 	
 	@NotEmpty
 	private String sexo;
+	
+	private String valorSecreto;
 
 	public String getUsername() {
 		return username;
@@ -160,5 +162,13 @@ public class Usuario {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+
+	public String getValorSecreto() {
+		return valorSecreto;
+	}
+
+	public void setValorSecreto(String valorSecreto) {
+		this.valorSecreto = valorSecreto;
 	}
 }
