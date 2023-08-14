@@ -43,4 +43,11 @@ public class Rol {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		Rol rol = (Rol)obj;
+		return this.id != null && this.id.equals(rol.getId());
+	}
 }
